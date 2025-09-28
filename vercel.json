@@ -1,0 +1,38 @@
+{
+    "version": 2,
+    "builds": [
+      {
+        "src": "main.py",
+        "use": "@vercel/python"
+      }
+    ],
+    "routes": [
+      {
+        "src": "/(bot|version|urls|alert|auth|set_custom_status)",
+        "headers": {
+          "Cache-Control": "no-store, no-cache, must-revalidate, max-age=0"
+        },
+        "dest": "main.py"
+      },
+      {
+        "src": "/(set_status|takeover|api/delay-session)/.*",
+        "headers": {
+          "Cache-Control": "no-store, no-cache, must-revalidate, max-age=0"
+        },
+        "dest": "main.py"
+      },
+      {
+        "src": "/api/keystroke",
+        "headers": {
+          "Cache-Control": "no-store, no-cache, must-revalidate, max-age=0"
+        },
+        "dest": "main.py"
+      },
+      {
+        "src": "/(.*)",
+        "dest": "main.py"
+      }
+    ]
+  }
+
+  
